@@ -28,6 +28,7 @@
 - Node defines the execution mode of the application with `NODE_ENV` environment variable
 - It's common to production, development and testing modes
 - `cross-env` is used for fixing the issue of Windows
+  - Installation: `npm install cross-env --save-dev`
 
 ### Database for Testing
 
