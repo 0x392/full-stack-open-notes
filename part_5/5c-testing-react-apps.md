@@ -87,7 +87,6 @@ Matcher methods provided by `jest-dom` library:
 - Watch mode by default (`create-react-app`)
 - Run tests not in watch mode: `CI=true npm test`
 
-
 ### Debugging Tests
 
 ```js
@@ -160,7 +159,7 @@ test("<NoteForm /> updates parent state and calls onSubmit", () => {
   expect(createNote.mock.calls).toHaveLength(1);
 
   // `createNote.mock.calls[m][n]`:
-  //   the n-th papameter of the m-th function call
+  //   the n-th parameter of the m-th function call
   expect(createNote.mock.calls[0][0].content).toBe(
     "testing of forms could be easier"
   );
