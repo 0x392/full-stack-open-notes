@@ -60,7 +60,7 @@
   - proptypes
 - 5c. [Testing React apps](part_5/5c-testing-react-apps.md)
   - `react-testing-library`
-- 5d. End-to-end testing
+- 5d. [End-to-end testing](part_5/5d-end-to-end-testing.md)
 
 ## Part 6: State management with Redux
 
