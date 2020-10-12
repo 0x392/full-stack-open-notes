@@ -61,6 +61,8 @@
 - 5c. [Testing React apps](part_5/5c-testing-react-apps.md)
   - `react-testing-library`
 - 5d. [End-to-end testing](part_5/5d-end-to-end-testing.md)
+  - End-to-end testing
+  - Cypress
 
 ## Part 6: State management with Redux
 
