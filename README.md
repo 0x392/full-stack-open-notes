@@ -66,7 +66,10 @@
 
 ## Part 6: State management with Redux
 
-- 6a. Flux architecture and Redux
+- 6a. [Flux architecture and Redux](part_6/6a-flux-architecture-and-redux.md)
+  - Flux architecture
+  - Redux
+  - `deep-freeze`
 - 6b. Many reducers
 - 6c. Communicating with server in redux application
 - 6d. connect
