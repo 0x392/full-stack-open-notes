@@ -162,7 +162,11 @@ it("example", function () {
 
 ### Others
 
-### Videos
+#### Arrow Functions
+
+When writing tests, it's recommended not to use arrow functions; they might cause some issues in certain situations
+
+#### Videos
 
 Can be found in `cypress/videos` directory
 
