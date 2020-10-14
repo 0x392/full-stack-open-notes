@@ -70,6 +70,7 @@
   - Flux architecture
   - Redux
   - `deep-freeze`
+  - Presentational and container components
 - 6b. Many reducers
 - 6c. Communicating with server in redux application
 - 6d. connect
