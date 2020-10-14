@@ -44,7 +44,7 @@ npm install redux
 - The state is stored into a Javascript object in the "store"
 - The state is changed with actions
 
-### Action
+### Actions
 
 An action is an object with at least a property `type`
 
@@ -62,7 +62,11 @@ action = {
 };
 ```
 
-### Reducer
+### Action Creators
+
+Action creators: functions that create actions
+
+### Reducers
 
 - Handle actions: a reducer defines the impact of the action to the state
 - A reducer is a function
@@ -97,6 +101,27 @@ const counterReducer = (state = 0, action) => {
 const store = createStore(counterReducer);
 ```
 
+## Forwarding Redux State to Various Components
+
+### `react-redux` Library
+
+Using the hooks API of the `react-redux` library
+
+Installation:
+
+```shell
+npm install react-redux
+```
+
+Example:
+
+```js
+import { useDispatch, useSelector } from "react-redux";
+
+const dispatch = useDispatch();
+const notes = useSelector((state) => state);
+```
+
 ## `deep-freeze`
 
 Used to ensure the reducer has been correctly defined as an immutable function
@@ -126,3 +151,10 @@ test("some test", () => {
   expect(/* ... */);
 });
 ```
+
+## Presentational and Container Components
+
+- Presentational components
+- Container components
+  - Contains some application logic (e.g. event handlers)
+  - Coordinates the configuration of presentational components
