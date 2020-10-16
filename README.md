@@ -74,7 +74,8 @@
 - 6b. [Many reducers](part_6/6b-many-reducers.md)
   - Combined reducers
   - Redux DevTools
-- 6c. Communicating with server in redux application
+- 6c. [Communicating with server in a redux application](part_6/6c-communicating-with-server-in-a-redux-application.md)
+  - `redux-thunk`
 - 6d. connect
 
 ## Part 7: React router, custom hooks, styling apps with CSS and webpack
