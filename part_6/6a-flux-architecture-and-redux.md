@@ -116,10 +116,63 @@ npm install react-redux
 Example:
 
 ```js
+// index.js
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import App from "./App";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+```js
+// App.js
+import React from "react";
+import SomeComponent from "./components/SomeComponent";
+import OtherComponent from "./components/OtherComponent";
+
+const App = () => {
+  return (
+    <div>
+      <SomeComponent />
+      <OtherComponent />
+    </div>
+  );
+};
+
+export default App;
+```
+
+```js
+// SomeComponent.js
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-const dispatch = useDispatch();
-const notes = useSelector((state) => state);
+const SomeComponent = () => {
+  const note = useSelector((state) => state.note);
+  const dispatch = useDispatch();
+
+  const handleClick = (id) => {
+    dispatch({ type: "LIKE", data: { id } });
+  };
+
+  return (
+    <div>
+      <div>{note}</div>
+      <div>
+        <button onClick={() => handleClick(note.id)}>Like</button>
+      </div>
+    </div>
+  );
+};
+
+export default SomeComponent;
 ```
 
 ## `deep-freeze`
