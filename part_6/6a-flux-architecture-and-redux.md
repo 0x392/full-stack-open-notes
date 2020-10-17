@@ -143,7 +143,8 @@ When a component is composed of many smaller components, there must be a way for
 
 ### `react-redux` Library
 
-Using the hooks API of the `react-redux` library
+- Using the hooks API of the `react-redux` library
+  - Practically: using the `useSelector` and `useDispatch` functions
 
 Installation:
 
@@ -218,10 +219,3 @@ const AnotherComponent = () => {
 
 export default AnotherComponent;
 ```
-
-## Presentational and Container Components
-
-- Presentational components
-- Container components
-  - Contains some application logic (e.g. event handlers)
-  - Coordinates the configuration of presentational components
