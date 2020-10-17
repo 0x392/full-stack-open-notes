@@ -68,15 +68,16 @@
 
 - 6a. [Flux architecture and Redux](part_6/6a-flux-architecture-and-redux.md)
   - Flux architecture
-  - Redux
+  - Redux library
   - `deep-freeze`
+  - Forwarding Redux store to various components
   - Presentational and container components
 - 6b. [Many reducers](part_6/6b-many-reducers.md)
   - Combined reducers
   - Redux DevTools
 - 6c. [Communicating with server in a redux application](part_6/6c-communicating-with-server-in-a-redux-application.md)
   - `redux-thunk`
-- 6d. connect
+- 6d. [connect](part_6/6d-connect.md)
 
 ## Part 7: React router, custom hooks, styling apps with CSS and webpack
 
