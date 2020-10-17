@@ -1,14 +1,15 @@
-# 6c. Communicating with server in a redux application
+# 6c. Communicating with server in a Redux application
 
 [Back to index](../README.md)
 
-It would be better to abstract the communication away from the components
+- It would be better to abstract the communication away from the components
+  - The components only have to call the appropriate action creator
 
 ## `redux-thunk`
 
-- `redux-thunk` is a redux-middleware
+- `redux-thunk` is a Redux middleware
   - Must be initialized along with the initialization of the store
-- `redux-thunk` is able to create asynchronous actions
+- `redux-thunk` enables us to create asynchronous action creators
 
 Installation:
 
@@ -37,8 +38,8 @@ ReactDOM.render(
 ```js
 // App.js
 import React, { useEffect } from "react";
-import { initializeNotes } from "./reducers/noteReducer";
 import { useDispatch } from "react-redux";
+import { initializeNotes } from "./reducers/noteReducer";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -57,9 +58,11 @@ export default App;
 // reducers/noteReducer.js
 import noteService from "../services/notes";
 
-// Returns an async function: first an asynchronous
-// operation is executed; then the action changing
-// the state of the store is dispatched
+// `initializeNote` is an action creator that
+// returns an async function:
+//   1. First an asynchronous operation is executed
+//   2. Then, the action changing the state of the
+//      store is dispatched
 export const initializeNotes = () => {
   return async (dispatch) => {
     const notes = await noteService.getAll();
