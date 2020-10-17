@@ -6,13 +6,13 @@
 
 Flux offers a standard way for:
 
-- How and where the state is kept
-- How the state is modified
+- How and where the state is kept (store)
+- How the state is modified (dispatch actions)
 
 The state in Flux architecture:
 
-- Separated completely from the React components into the "stores"
-- Not changed directly
+- It's separated completely from the React components into its own "stores"
+- It's not changed directly
   - Using different "actions" to change
 
 Action -> Dispatcher -> Store -> View
@@ -29,12 +29,13 @@ npm install redux
 
 - State
 - Store
-- Action
-- Reducer
+- Actions
+  - Action creators
+- Reducers
 
-#### Commonly Used Functions
+#### Commonly Used Functions of Redux
 
-- `createStore`: creates the store
+- `createStore`
 - `store.dispatch({ type: ... })`: dispatches an action to the store
 - `store.getState()`
 - `store.subscribe(() => { ... })`: creates callback functions the store calls when its state is changed
@@ -46,14 +47,14 @@ npm install redux
 
 ### Actions
 
-An action is an object with at least a property `type`
+Actions are objects with at least a property `type`
 
-Examples:
+Example:
 
 ```js
-action = { type: "INCREMENT" };
+simple_action = { type: "INCREMENT" };
 
-action = {
+action_with_data = {
   type: "NEW_NOTE",
   data: {
     id: 1,
@@ -62,7 +63,7 @@ action = {
 };
 ```
 
-### Action Creators
+#### Action Creators
 
 Action creators: functions that create actions
 
@@ -72,15 +73,20 @@ Action creators: functions that create actions
 - A reducer is a function
   - Parameters: current state, action
   - Returns a new state
-  - Never supposed to be called directly
-    - Only given as a parameter to the `createStore` function
-  - Must be pure functions
-    - Do not cause any side effects
-    - Always returns the same response with the same parameters
-    - Don't use `stats.push(..)`; use `stats.concat(..)` instead
-- A reducer state must be composed of immutable objects
 
-### Example: Note App
+Note:
+
+- Reducers are never supposed to be called directly from application code
+- Reducers are only given as a parameter to the `createStore` function
+- Reducers must be pure functions
+  - Do not cause any side effects
+  - Always return the same response when called with the same parameters
+  - Don't use `stats.push(..)`; use `stats.concat(..)` instead
+  - Using `deep-freeze` to ensure the reducer has been correctly defined as an immutable function
+- A reducer state must be composed of immutable objects
+  - If there is a change in the state, the old object is replaced with a new, changed object
+
+### Example: Counter App
 
 ```js
 import { createStore } from "redux";
@@ -99,80 +105,6 @@ const counterReducer = (state = 0, action) => {
 };
 
 const store = createStore(counterReducer);
-```
-
-## Forwarding Redux State to Various Components
-
-### `react-redux` Library
-
-Using the hooks API of the `react-redux` library
-
-Installation:
-
-```shell
-npm install react-redux
-```
-
-Example:
-
-```js
-// index.js
-import React from "react";
-import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
-import store from "./store";
-import App from "./App";
-
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
-```
-
-```js
-// App.js
-import React from "react";
-import SomeComponent from "./components/SomeComponent";
-import OtherComponent from "./components/OtherComponent";
-
-const App = () => {
-  return (
-    <div>
-      <SomeComponent />
-      <OtherComponent />
-    </div>
-  );
-};
-
-export default App;
-```
-
-```js
-// SomeComponent.js
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-
-const SomeComponent = () => {
-  const note = useSelector((state) => state.note);
-  const dispatch = useDispatch();
-
-  const handleClick = (id) => {
-    dispatch({ type: "LIKE", data: { id } });
-  };
-
-  return (
-    <div>
-      <div>{note}</div>
-      <div>
-        <button onClick={() => handleClick(note.id)}>Like</button>
-      </div>
-    </div>
-  );
-};
-
-export default SomeComponent;
 ```
 
 ## `deep-freeze`
@@ -203,6 +135,88 @@ test("some test", () => {
   const newState = appReducer(state, action);
   expect(/* ... */);
 });
+```
+
+## Forwarding Redux Store to Various Components
+
+When a component is composed of many smaller components, there must be a way for all of the components to access the store
+
+### `react-redux` Library
+
+Using the hooks API of the `react-redux` library
+
+Installation:
+
+```shell
+npm install react-redux
+```
+
+Example:
+
+```js
+// index.js
+// 1. Import `Provider` component from the
+//    `react-redux` library
+// 2. Wrap the `App` component with a `Provider`
+//    component (with `store` prop)
+// 3. There is no need to use `store.subscribe(..)`
+//    for re-rendering now
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import App from "./App";
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
+);
+```
+
+```js
+// App.js
+import React from "react";
+import SomeComponent from "./components/SomeComponent";
+import AnotherComponent from "./components/AnotherComponent";
+
+const App = () => {
+  return (
+    <div>
+      <SomeComponent />
+      <AnotherComponent />
+    </div>
+  );
+};
+
+export default App;
+```
+
+```js
+// AnotherComponent.js
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+const AnotherComponent = () => {
+  const note = useSelector((state) => state.note);
+  const dispatch = useDispatch();
+
+  const handleClick = (id) => {
+    dispatch({ type: "LIKE", data: { id } });
+  };
+
+  return (
+    <div>
+      <div>{note.content}</div>
+      <div>
+        <button onClick={() => handleClick(note.id)}>Like</button>
+      </div>
+    </div>
+  );
+};
+
+export default AnotherComponent;
 ```
 
 ## Presentational and Container Components
