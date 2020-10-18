@@ -42,7 +42,7 @@ React offers 10 built-in hooks
 
 ```js
 // index.js
-import useCounter from "./useCounter";
+import { useCounter } from "./hooks";
 
 const Counter = (props) => {
   const counter = useCounter();
@@ -69,10 +69,10 @@ const App = () => {
 ```
 
 ```js
-// useCounter.js
+// hooks/index.js
 import { useState } from "react";
 
-export default () => {
+export const useCounter = () => {
   const [value, setValue] = useState(0);
 
   const increase = () => setValue(value + 1);
@@ -87,7 +87,7 @@ export default () => {
 
 ```js
 // index.js
-import useField from "./useField";
+import { useField } from "./hooks";
 
 const App = () => {
   const field = useField("text");
@@ -108,10 +108,10 @@ const App = () => {
 ```
 
 ```js
-// useField.js
+// hooks/index.js
 import { useState } from "react";
 
-export default (type) => {
+export const useFiled = (type) => {
   const [value, setValue] = useState("");
 
   const onChange = (event) => {
