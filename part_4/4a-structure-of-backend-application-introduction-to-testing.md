@@ -4,7 +4,33 @@
 
 ## Structure of Backend Application
 
-See [here](https://github.com/0x392/nodejs-backend-sample)
+- `build`: Put the files related to frontend in this directory
+- `controllers`: Event handlers of routes are commonly referred to as controllers
+- `models`: For Mongoose schemas
+- `requests`: For REST testing files
+- `utils/config.js`: Handles environment variables
+- `app.js`:
+  - The actual Express application
+  - Establishes connection to database
+- `index.js`: Imports the actual application from `app.js` and starts the application
+
+```plaintext
+├── build
+├── controllers
+├── models
+├── requests
+│── tests
+├── utils
+│   ├── config.js
+│   ├── logger.js
+│   ├── middleware.js
+│   └── ...
+├── .env
+├── app.js
+├── index.js
+├── package-lock.json
+├── package.json
+```
 
 ### Extract Logging
 
