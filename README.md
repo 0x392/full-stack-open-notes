@@ -83,8 +83,42 @@
 
 ## Part 7: React router, custom hooks, styling apps with CSS and webpack
 
+- 7a. [React router](part_7/7a-react-router.md)
+  - React router
+- 7b. [Custom hooks](part_7/7b-custom-hooks.md)
+  - Examples of Hooks
+  - Hooks rules
+  - Custom hooks
+  - More about hooks
+- 7c. [More about styles](part_7/7c-more-about-style.md)
+  - `react-bootstrap`
+  - Material-UI
+  - Styled components
+- 7d. [Webpack](part_7/7d-webpack.md)
+  - Webpack
+  - Transpilation and polyfill
+- 7e. [Class components, miscellaneous](part_7/7e-class-components-miscellaneous.md)
+  - Class components
+  - Miscellaneous
+
 ## Part 8: GraphQL
+
+- 8a. GraphQL server
+- 8b. React and GraphQL
+- 8c. Database and user administration
+- 8d. Login and updating the cache
+- 8e. Fragments and subscriptions
 
 ## Part 9: Typescript
 
+- 9a. Background and introduction
+- 9b. First steps with Typescript
+- 9c. Typing the express app
+- 9d. React with types
+
 ## Part 10: React Native
+
+- 10a. Introduction to React Native
+- 10b. React Native basics
+- 10c. Communicating with server
+- 10d. Testing and extending our application
