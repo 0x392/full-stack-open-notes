@@ -22,7 +22,7 @@ Action -> Dispatcher -> Store -> View
 Installation:
 
 ```shell
-npm install redux
+npm install redux --save
 ```
 
 ### Components of Redux
