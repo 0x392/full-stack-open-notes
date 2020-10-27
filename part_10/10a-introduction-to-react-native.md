@@ -16,10 +16,12 @@ Initialize the project:
 expo init <directory> --template expo-template-blank@sdk-38
 ```
 
-Running the script `npm start` starts
+Running the script `npm start` starts:
 
 - Metro bundler
-- Expo development tools (open in a browser)
+  - An HTTP server that compiles the JavaScript code (using Babel) and serves it
+- Expo development tools
+  - A graphical interface for Expo CLI
 
 ## React Native Debugger
 
